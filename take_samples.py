@@ -43,9 +43,12 @@ def main():
         _, frame = cam.read()
         _, aux = cam.read()
 
-        cv2.putText(aux, directions[step], (140, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 250), 2, cv2.LINE_AA)
+        width = int(cam.get(cv2.CAP_PROP_FRAME_WIDTH) * 0.66 + 10)
+        height = int(cam.get(cv2.CAP_PROP_FRAME_HEIGHT) - 10)
 
-        cv2.putText(aux, f"{cont-1}/100", (280, 400), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 250, 250), 2, cv2.LINE_AA)
+        cv2.putText(aux, directions[step], (10, height), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 250), 2, cv2.LINE_AA)
+
+        cv2.putText(aux, f"{cont-1}/100", (width, height), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 250, 250), 2, cv2.LINE_AA)
 
         cv2.imshow('aux', aux)
 
